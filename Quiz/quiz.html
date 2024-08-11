@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Application</title>
+    <link rel="stylesheet" href="quiz.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Courgette&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Interactive Quiz Application</h1>
+        </header>
+        
+        <main class="available-quizzes-section blinking-border">
+          <p class="highlighted-text">Enjoy doing Quiz</p>
+          <div id="quiz-list">
+              <h2>Available Quizzes</h2>
+              <div class="quiz-container">
+                  <div class="quiz-wrapper">
+                      <div class="quiz-card" onclick="selectDifficulty('JavaScript Basics')">
+                          <h3>JavaScript Basics</h3>
+                          <p>Test your knowledge of JavaScript fundamentals.</p>
+                      </div>
+                      <div class="quiz-card" onclick="selectDifficulty('HTML & CSS')">
+                          <h3>HTML & CSS</h3>
+                          <p>How well do you know web development basics?</p>
+                      </div>
+                      <div class="quiz-card" onclick="selectDifficulty('React Basics')">
+                          <h3>React Basics</h3>
+                          <p>Learn the basics of React framework.</p>
+                      </div>
+                      <div class="quiz-card" onclick="selectDifficulty('Node.js')">
+                          <h3>Node.js</h3>
+                          <p>Understand server-side programming with Node.js.</p>
+                      </div>
+                      <div class="quiz-card" onclick="selectDifficulty('Python Basics')">
+                        <h3>Python Basics</h3>
+                        <p>Test your knowledge of fundamental Python programming concepts.</p>
+                    </div>
+                    
+                    <div class="quiz-card" onclick="selectDifficulty('Database Management')">
+                        <h3>Database Management</h3>
+                        <p>Evaluate your understanding of database design and SQL queries.</p>
+                    </div>
+                    
+                  </div>
+              </div>
+          </div>
+      </main>
+      
+
+        <section id="difficulty-level" class="difficulty-level-section hidden">
+            <h2 class="select">Select Difficulty</h2>
+            <div class="difficulty-buttons">
+                <button onclick="startQuiz('Easy')" class="difficulty-btn easy">Easy</button>
+                <button onclick="startQuiz('Medium')" class="difficulty-btn medium">Medium</button>
+                <button onclick="startQuiz('Hard')" class="difficulty-btn hard">Hard</button>
+            </div>
+            <div class="instructions">
+                <p class="inst">Instructions</p>
+                <p class="quiz-conditions">Each question carries one mark.</p>
+                <p class="quiz-conditions">No negative marks for wrong answers.</p>
+                <p class="quiz-conditions">Questions are skipped automatically if time runs out.</p>
+            </div>
+        </section>
+        
+        <section id="quiz-container" class="quiz-container-section hidden">
+            <h2 id="quiz-title"></h2>
+            <div id="quiz-timer">Time Left: <span id="time">10</span>s</div>
+            <div id="question-container"></div>
+            <button id="submit-btn" onclick="submitQuiz()">Submit</button>
+        </section>
+
+        <section id="result-container" class="result-container-section hidden">
+            <h2>Your Score</h2>
+            <p id="score"></p>
+            <div id="answers-container"></div>
+            <button onclick="resetQuiz()">Take Another Quiz</button>
+        </section>
+    </div>
+
+    <script src="quiz.js"></script>
+</body>
+</html>

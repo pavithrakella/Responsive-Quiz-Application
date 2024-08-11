@@ -1,0 +1,670 @@
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Raleway:wght@300;400&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: url("bg1.webp") no-repeat center center;
+  background-size: cover; /* Ensures the image covers the entire page */
+  color: #000000;
+  padding: 20px;
+  margin: 0; /* Removes default margin to make sure the background image covers the whole viewport */
+}
+
+.container {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+@keyframes zoomInOut {
+  0% {
+    transform: scale(1); /* Initial scale */
+  }
+  50% {
+    transform: scale(1.2); /* Zoom in */
+  }
+  100% {
+    transform: scale(1); /* Zoom out */
+  }
+}
+
+h1 {
+  font-size: 2rem;
+  color: #000000b6;
+  font-family: "Courgette", cursive;
+  animation: zoomInOut 2s infinite; /* Apply the zoom animation */
+}
+
+#quiz-list {
+  margin-top: 20px;
+  text-align: center;
+  background: url("bg.jpg") no-repeat center center;
+  background-size: cover;
+  padding: 50px 0;
+  color: white;
+}
+
+#quiz-list h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  font-family: "Great Vibes", cursive;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Container for quiz cards */
+.quiz-container {
+  max-height: 400px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  margin: 0 auto;
+  position: relative;
+  padding-right: 20px;
+  display: flex; /* Ensure flex layout for alignment */
+  flex-direction: column; /* Stack cards vertically */
+}
+.quiz-container:hover .quiz-card {
+  transform: scale(1.05);
+}
+
+.quiz-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  position: relative;
+  width: 100%;
+}
+
+.quiz-card {
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 20px;
+  margin: 15px auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  max-width: 400px;
+  cursor: pointer;
+  position: relative;
+  transform: translateX(-100%);
+  animation: slideIn 0.5s forwards;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for quiz-container */
+.quiz-card :hover {
+  transform: scale(1.05) translateX(0); /* Apply zoom effect on hover */
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Delay each quiz card animation */
+.quiz-card:nth-child(1) {
+  animation-delay: 0s;
+}
+
+.quiz-card:nth-child(2) {
+  animation-delay: 0.5s;
+}
+
+.quiz-card:nth-child(3) {
+  animation-delay: 1s;
+}
+
+.quiz-card:nth-child(4) {
+  animation-delay: 1.5s;
+}
+
+.quiz-card:nth-child(5) {
+  animation-delay: 2s;
+}
+
+.quiz-card:nth-child(6) {
+  animation-delay: 2.5s;
+}
+
+/* Customize scrollbar for Webkit browsers (Chrome, Safari) */
+.quiz-container::-webkit-scrollbar {
+  width: 12px;
+}
+
+.quiz-container::-webkit-scrollbar-track {
+  background: #e76dd3;
+  border-radius: 10px;
+}
+
+.quiz-container::-webkit-scrollbar-thumb {
+  background: #e76dd3;
+  border-radius: 10px;
+}
+
+.quiz-container::-webkit-scrollbar-thumb:hover {
+  background: #d6a2c7;
+}
+
+/* Customize scrollbar for Firefox */
+.quiz-container {
+  scrollbar-width: thin;
+  scrollbar-color: #e76dd3 #f1f1f1;
+}
+
+@media (max-width: 768px) {
+  .quiz-card {
+    padding: 15px;
+    max-width: 100%;
+  }
+
+  .quiz-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .quiz-card p {
+    font-size: 0.9rem;
+  }
+
+  .quiz-container {
+    max-height: 300px;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+#quiz-timer {
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+#difficulty-level {
+  background: url("img2.jpg") no-repeat center center;
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  height: 450px;
+}
+
+#difficulty-level h2 {
+  text-align: center;
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+}
+
+/* Difficulty Buttons Container */
+.difficulty-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  margin: 0 auto;
+  opacity: 0;
+  animation: slideDown 1s ease-in-out 1s forwards;
+}
+
+.difficulty-buttons button {
+  margin: 10px 20px;
+  padding: 10px 20px;
+}
+
+/* Slide Down Animation */
+@keyframes slideDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.difficulty-btn {
+  padding: 15px 25px;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: white;
+}
+
+.difficulty-btn.easy {
+  background-color: #28a745;
+}
+
+.difficulty-btn.medium {
+  background-color: #ffc107;
+}
+
+.difficulty-btn.hard {
+  background-color: #dc3545;
+}
+
+.difficulty-btn:hover {
+  transform: scale(1.05);
+}
+
+.instructions {
+  /* background: linear-gradient(135deg, #ff7e5f, #feb47b); */
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  /* margin-top: 5px; */
+  margin-bottom: 50px;
+  text-align: center;
+  color: #fff;
+  font-family: "Open Sans", sans-serif;
+  transition: transform 0.3s ease;
+}
+
+.instructions:hover {
+  transform: translateY(-5px);
+}
+
+.instructions-title {
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.5);
+  padding-bottom: 10px;
+}
+/* Font Import */
+
+/* Styling for the "Select Difficulty" heading */
+.select {
+  font-family: "Lobster", cursive; /* A decorative, cursive font */
+  font-size: 2.5rem;
+  color: #0ea58c;
+  text-align: center;
+  margin-bottom: 15px;
+  /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); */
+  animation: fadeInDown 1s ease-in-out;
+  opacity: 0;
+  animation-fill-mode: forwards; /* Keeps the animation state after completion */
+}
+
+/* Styling for the "Instructions" paragraph */
+.inst {
+  font-family: "Great Vibes", cursive; /* A clean, modern sans-serif font */
+  font-size: 2rem;
+  color: #e20c0c;
+  text-align: center;
+
+  margin-bottom: 30px;
+  line-height: 1.6;
+  opacity: 0;
+  animation: fadeInUp 1.5s ease-in-out 0.5s;
+  animation-fill-mode: forwards; /* Keeps the animation state after completion */
+}
+
+/* Fade-in animation for the heading */
+@keyframes fadeInDown {
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Fade-in animation for the paragraph */
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Additional styling for responsive design */
+@media (max-width: 768px) {
+  h2.select {
+    font-size: 2rem;
+  }
+
+  p.inst {
+    font-size: 1rem;
+    margin-bottom: 20px;
+  }
+}
+
+.quiz-conditions {
+  font-size: 1.1rem;
+  margin-top: 30px;
+  font-weight: 500;
+  line-height: 1.6;
+}
+
+.quiz-conditions::before {
+  content: "✓ ";
+  color: #ffe259;
+  font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .difficulty-buttons {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .difficulty-btn {
+    width: 100%;
+    padding: 20px;
+  }
+
+  #difficulty-level h2 {
+    font-size: 1.5rem;
+  }
+
+  .quiz-conditions {
+    font-size: 0.9rem;
+  }
+
+  .instructions {
+    padding: 15px;
+  }
+
+  .instructions-title {
+    font-size: 1.4rem;
+  }
+
+  .quiz-conditions {
+    font-size: 1rem;
+  }
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+.correct {
+  color: green;
+}
+
+.incorrect {
+  color: red;
+}
+/* General Styling */
+#quiz-container {
+  background: url("img.jpg") no-repeat center center;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  max-width: 800px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: scale(0.9);
+  animation: fadeInScale 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeInScale {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+#quiz-title {
+  font-family: "Lobster", cursive;
+  font-size: 2.2rem;
+  color: #0ea58c;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+#quiz-timer {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ff5733;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+#quiz-timer span {
+  color: #007bff;
+  font-size: 1.5rem;
+}
+
+#question-container {
+  font-size: 1.1rem;
+  color: #fff;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+#submit-btn {
+  width: 100px;
+  padding: 12px;
+  background-color: #28a745;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1rem;
+  text-align: center;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#submit-btn:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #quiz-container {
+    padding: 15px;
+  }
+
+  #quiz-title {
+    font-size: 1.8rem;
+  }
+
+  #quiz-timer {
+    font-size: 1rem;
+  }
+
+  #question-container {
+    font-size: 1rem;
+  }
+
+  #submit-btn {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #quiz-container {
+    padding: 10px;
+  }
+
+  #quiz-title {
+    font-size: 1.6rem;
+  }
+
+  #quiz-timer {
+    font-size: 0.9rem;
+  }
+
+  #question-container {
+    font-size: 0.9rem;
+  }
+
+  #submit-btn {
+    padding: 8px;
+    font-size: 0.8rem;
+  }
+}
+#result-container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #941b6c;
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 1s ease-out;
+}
+
+#score {
+  font-size: 36px;
+  font-weight: bold;
+  color: #941b6c;
+  font-family: "Great Vibes", cursive;
+  text-align: center;
+  margin-bottom: 20px;
+  animation: pulse 2s infinite;
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#answers-container {
+  margin-top: 30px;
+  padding: 10px 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#answers-container p {
+  margin: 10px 0;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+button {
+  display: block;
+  margin: 30px auto 0;
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #218838;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 600px) {
+  #result-container {
+    padding: 15px;
+  }
+
+  #score {
+    font-size: 28px;
+    padding: 15px;
+  }
+
+  #answers-container p {
+    font-size: 16px;
+  }
+
+  button {
+    padding: 8px 15px;
+    font-size: 16px;
+  }
+}
+/* General styles for quiz section */
+main {
+  padding: 20px;
+  background: #7a8854ea;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 5px solid transparent;
+  animation: blink-border 1.5s infinite;
+  color: #fff;
+}
+.highlighted-text {
+  text-align: center;
+  font-size: 22px; /* Slightly smaller font size */
+  font-weight: bold;
+  color: #f1f1f1; /* Lightened text color for contrast */
+  background-color: #4a5b3e; /* Darker shade for background highlight */
+  padding: 10px; /* Reduced padding for a shorter block */
+  margin-bottom: 15px; /* Reduced margin between the highlighted text and quiz cards */
+  border-radius: 8px; /* Adjusted border radius for a tighter look */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+  display: inline-block; /* To ensure padding and border radius are applied */
+  font-family: "Arial", sans-serif; /* Optional: Change font family for a different look */
+}
+
+.highlighted-text::before {
+  content: "🎉 "; /* Add an emoji for a fun touch */
+}
+/* Specific styles for difficulty level section */
+
+/* Keyframes for blinking border animation */
+@keyframes blink-border {
+  0% {
+    border-color: transparent;
+  }
+  50% {
+    border-color: rgba(0, 0, 0, 0.7);
+  }
+  100% {
+    border-color: transparent;
+  }
+}
